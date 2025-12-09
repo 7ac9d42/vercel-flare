@@ -5,6 +5,10 @@ import styles from "./page.module.css";
 
 const ICON_BASE = "/icons";
 
+// Ensure this route is fully static and pre-rendered during build.
+export const dynamic = "force-static";
+export const revalidate = false;
+
 function normalizeIconName(raw: string): string {
   return raw
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")

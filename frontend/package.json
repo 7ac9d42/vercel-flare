@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "node scripts/log-env.js",
     "dev": "next dev",
     "icons:optimize": "svgo -f public/icons",
     "build": "node scripts/fetch-icons.js && npm run icons:optimize && next build",
