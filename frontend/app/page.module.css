@@ -1,0 +1,230 @@
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 28px 28px 18px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topLine {
+  width: 100%;
+  border-top: 1px solid var(--divider);
+  margin: 0 0 18px;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.time {
+  font-size: 15px;
+  color: var(--muted);
+  transform: translateY(-4px);
+  text-align: right;
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.section {
+  margin-top: 34px;
+}
+
+.section h2 {
+  font-size: 17px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.appGrid {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px 32px;
+  justify-items: start;
+}
+
+.appItem {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  width: 100%;
+  transition: background 0.12s ease, transform 0.12s ease;
+}
+
+.blockLink {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.appItem:hover,
+.linkItem:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.appItem:hover {
+  transform: translateY(-1px);
+}
+
+.appTitle {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.appText p {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.35;
+  margin-top: 2px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  filter: invert(23%) sepia(12%) saturate(418%) hue-rotate(352deg) brightness(90%) contrast(88%) opacity(0.85);
+}
+
+.bookmarks {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
+  gap: 10px 30px;
+  justify-content: start;
+  justify-items: start;
+}
+
+.bookmarkGroup {
+  border-top: 1px solid var(--divider);
+  padding-top: 6px;
+  width: 100%;
+  max-width: 260px;
+  justify-self: start;
+}
+
+/* 细调：书签区所有列图标统一右移 10px，便于与文字对齐 */
+.bookmarks .icon {
+  margin-left: 10px;
+}
+
+.bookmarkGroup h3 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 7px;
+  justify-items: start;
+}
+
+.linkItem {
+  display: inline-flex;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 4px 6px;
+  border-radius: 7px;
+  transition: background 0.12s ease, transform 0.12s ease;
+  width: 100%;
+  justify-self: start;
+}
+
+.linkItem:hover {
+  transform: translateY(-1px);
+}
+
+.linkTitle {
+  margin-left: 12px;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 6px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.heart {
+  color: #d46b6b;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 32px 18px 72px;
+  }
+
+  .title {
+    font-size: 46px;
+  }
+
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .time {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 38px;
+  }
+
+  .topLine {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .appGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+  }
+
+  .appItem {
+    padding: 6px 10px;
+  }
+
+  .appText a {
+    font-size: 14px;
+  }
+
+  .appText p {
+    font-size: 12px;
+  }
+
+  .bookmarks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 12px;
+  }
+}

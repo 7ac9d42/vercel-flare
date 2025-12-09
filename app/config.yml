@@ -1,0 +1,9 @@
+# 复制为 app/config.yml 后生效
+title: "Flare 导航"
+show-clock: true            # 是否显示日期/时间
+open-app-new-tab: true      # 应用卡片是否在新标签页打开
+open-bookmark-new-tab: true # 书签是否在新标签页打开
+
+footer:
+  enabled: false            # true 时显示页脚提示
+  text: "由 Flare ❤️ 驱动"
