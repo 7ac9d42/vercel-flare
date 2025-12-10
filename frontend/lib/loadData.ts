@@ -31,6 +31,7 @@ export interface NavigationData {
   };
   site?: {
     title: string;
+    description?: string;
     showClock: boolean;
     openAppNewTab: boolean;
     openBookmarkNewTab: boolean;
@@ -161,6 +162,9 @@ export async function loadData(): Promise<NavigationData> {
     },
     site: {
       title: pickString(configYaml, ["title", "Title", "greetings", "Greetings"]) ?? "Flare 导航",
+      description:
+        pickString(configYaml, ["description", "desc", "subtitle", "tagline"]) ??
+        "Flare 导航 - 简洁的起始页，快速打开常用站点和应用。",
       showClock: pickBoolean(configYaml, ["show-clock", "ShowDateTime"], true),
       openAppNewTab: pickBoolean(configYaml, ["open-app-new-tab", "OpenAppNewTab"], false),
       openBookmarkNewTab: pickBoolean(configYaml, ["open-bookmark-new-tab", "OpenBookmarkNewTab"], false),

@@ -13,7 +13,7 @@
 2. 准备配置（修改项目默认配置文件）  
    - `apps.yml`：`links` 列表，`name`/`link` 必填，可选 `icon`、`desc`
    - `bookmarks.yml`：`categories`（`id`、`title`），`links`（`name`、`link`，可选 `icon`、`category`）
-   - `config.yml`：站点标题、是否显示时钟、是否新开标签、页脚开关与文案
+   - `config.yml`：站点标题、描述、是否显示时钟、是否新开标签、页脚开关与文案
 3. 在Vercel选择自己的项目（项目已配置构建流程，无需额外配置，直接选择构建即可），开始构建
 
 仓库根目录 `vercel.json` 已配置默认流程：
@@ -32,7 +32,7 @@ outputDirectory: "frontend/out"
 2) 准备配置（修改项目默认配置文件）  
    - `apps.yml`：`links` 列表，`name`/`link` 必填，可选 `icon`、`desc`
    - `bookmarks.yml`：`categories`（`id`、`title`），`links`（`name`、`link`，可选 `icon`、`category`）
-   - `config.yml`：站点标题、是否显示时钟、是否新开标签、页脚开关与文案
+   - `config.yml`：站点标题、描述、是否显示时钟、是否新开标签、页脚开关与文案
 3) 本地开发  
    ```bash
    cd frontend
