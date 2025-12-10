@@ -6,7 +6,7 @@
 - 数据全部来自 `app/*.yml`，构建时读入后导出静态站点
 - 无后端依赖、无运行时写操作，默认内置所需 SVG 图标(按需在构建阶段拉取)
 - 移动端两列布局自适应，空分类自动隐藏
-- 已升级 Next.js 16.0.7 以覆盖已披露的高危漏洞（CVE-2025-66478）
+- 已升级 Next.js > 16.0.7 以覆盖已披露的高危漏洞（CVE-2025-66478）
 
 ## Vercel 部署（推荐）
 1. 使用模板创建自己的项目(推荐选用private)
@@ -51,5 +51,8 @@ outputDirectory: "frontend/out"
 - `app/*.example.yml`：示例配置，请复制为同名无 `.example` 的文件后使用
 - `frontend/public/icons`：构建时按需拉取的 SVG 图标，避免人为增删
 
+## 如何选择图标？
+前往 https://pictogrammers.com/library/mdi/ 挑选你喜欢的icon, 填入配置文件，部署时会自动拉取所需的图标
+
 ## 授权
-本项目基于 MIT License 发布，详见 `LICENSE`。
+本项目基于 MIT License 发布，详见 `LICENSE`
