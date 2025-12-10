@@ -52,7 +52,7 @@ outputDirectory: "frontend/out"
 - `frontend/public/icons`：构建时按需拉取的 SVG 图标，避免人为增删
 
 ## 如何选择图标？
-前往 https://pictogrammers.com/library/mdi/ 挑选你喜欢的icon, 填入配置文件，部署时会自动拉取所需的图标
+前往 https://pictogrammers.com/library/mdi/ 挑选你喜欢的icon，填入配置文件，部署时会自动拉取所需的图标
 
 ## 授权
 本项目基于 MIT License 发布，详见 `LICENSE`
