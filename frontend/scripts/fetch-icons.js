@@ -20,6 +20,7 @@ const ROOT = path.resolve(__dirname, "..", "..");
 const APPS_FILE = path.join(ROOT, "app", "apps.yml");
 const BOOKMARKS_FILE = path.join(ROOT, "app", "bookmarks.yml");
 const OUTPUT_DIR = path.resolve(__dirname, "..", "public", "icons");
+const ICON_NAME_PATTERN = /^[a-z0-9-]+$/;
 
 function normalizeIconName(raw) {
   return String(raw)
@@ -76,7 +77,16 @@ async function main() {
 
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
-  const queue = [...icons].map((name) => normalizeIconName(name));
+  const queue = [];
+  for (const raw of icons) {
+    const name = normalizeIconName(raw);
+    if (!ICON_NAME_PATTERN.test(name)) {
+      console.warn(`skip icon ${raw}: invalid name (must match ${ICON_NAME_PATTERN.source})`);
+      continue;
+    }
+    queue.push(name);
+  }
+
   const concurrency = Math.min(8, queue.length || 1);
 
   async function fetchSvg(url) {
@@ -99,6 +109,11 @@ async function main() {
   }
 
   async function saveOne(name) {
+    if (!ICON_NAME_PATTERN.test(name)) {
+      console.warn(`skip icon ${name}: invalid name after normalization`);
+      return;
+    }
+
     const url = `${CDN_BASE}/${name}.svg`;
     const dest = path.join(OUTPUT_DIR, `${name}.svg`);
     for (let attempt = 1; attempt <= 2; attempt += 1) {

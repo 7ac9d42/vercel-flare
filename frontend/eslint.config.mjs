@@ -9,8 +9,20 @@ const config = [
       "out/**",
       ".npm-cache/**",
       ".config/**",
-      "scripts/**",
     ],
+  },
+  {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      sourceType: "commonjs",
+      globals: {
+        console: "readonly",
+        process: "readonly",
+        __dirname: "readonly",
+        module: "readonly",
+        require: "readonly",
+      },
+    },
   },
 ];
 

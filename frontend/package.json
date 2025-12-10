@@ -8,7 +8,7 @@
     "icons:optimize": "svgo -f public/icons",
     "build": "node scripts/fetch-icons.js && npm run icons:optimize && next build",
     "start": "serve out --listen 5005 --single --no-clipboard",
-    "lint": "eslint . --ext .ts,.tsx --max-warnings=0"
+    "lint": "eslint . --ext .ts,.tsx,.js --max-warnings=0"
   },
   "dependencies": {
     "js-yaml": "^4.1.1",

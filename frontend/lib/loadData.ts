@@ -84,74 +84,100 @@ async function readYaml<T>(filePath: string): Promise<T | null> {
   }
 }
 
-function asAppLinks(value: unknown): AppLink[] {
+function asAppLinks(value: unknown, warnings: string[], source: string): AppLink[] {
   if (!Array.isArray(value)) return [];
-  return value
-    .map((item) => {
-      if (!item || typeof item !== "object") return null;
-      const entry = item as Record<string, unknown>;
-      if (typeof entry.name !== "string" || typeof entry.link !== "string") {
-        return null;
-      }
-      return {
-        name: entry.name,
-        link: entry.link,
-        icon: typeof entry.icon === "string" ? entry.icon : undefined,
-        desc: typeof entry.desc === "string" ? entry.desc : undefined,
-      };
-    })
-    .filter(Boolean) as AppLink[];
+
+  const result: AppLink[] = [];
+
+  value.forEach((item, index) => {
+    if (!item || typeof item !== "object") {
+      warnings.push(`${source}: links[${index}] 不是有效对象，已跳过`);
+      return;
+    }
+    const entry = item as Record<string, unknown>;
+    if (typeof entry.name !== "string" || typeof entry.link !== "string") {
+      warnings.push(`${source}: links[${index}] 缺少必填字段 name/link，已跳过`);
+      return;
+    }
+    result.push({
+      name: entry.name,
+      link: entry.link,
+      icon: typeof entry.icon === "string" ? entry.icon : undefined,
+      desc: typeof entry.desc === "string" ? entry.desc : undefined,
+    });
+  });
+
+  return result;
 }
 
-function asCategories(value: unknown): BookmarkCategory[] {
+function asCategories(value: unknown, warnings: string[], source: string): BookmarkCategory[] {
   if (!Array.isArray(value)) return [];
-  return value
-    .map((item) => {
-      if (!item || typeof item !== "object") return null;
-      const entry = item as Record<string, unknown>;
-      if (entry.title === undefined) return null;
-      const title = typeof entry.title === "string" ? entry.title : String(entry.title);
-      const id = entry.id ?? title;
-      return {
-        id: typeof id === "string" || typeof id === "number" ? id : String(id),
-        title,
-      };
-    })
-    .filter(Boolean) as BookmarkCategory[];
+
+  const result: BookmarkCategory[] = [];
+
+  value.forEach((item, index) => {
+    if (!item || typeof item !== "object") {
+      warnings.push(`${source}: categories[${index}] 不是有效对象，已跳过`);
+      return;
+    }
+    const entry = item as Record<string, unknown>;
+    if (entry.title === undefined) {
+      warnings.push(`${source}: categories[${index}] 缺少 title，已跳过`);
+      return;
+    }
+    const title = typeof entry.title === "string" ? entry.title : String(entry.title);
+    const id = entry.id ?? title;
+    result.push({
+      id: typeof id === "string" || typeof id === "number" ? id : String(id),
+      title,
+    });
+  });
+
+  return result;
 }
 
-function asBookmarkLinks(value: unknown): BookmarkLink[] {
+function asBookmarkLinks(value: unknown, warnings: string[], source: string): BookmarkLink[] {
   if (!Array.isArray(value)) return [];
-  return value
-    .map((item) => {
-      if (!item || typeof item !== "object") return null;
-      const entry = item as Record<string, unknown>;
-      if (typeof entry.name !== "string" || typeof entry.link !== "string") return null;
-      const category = entry.category;
-      return {
-        name: entry.name,
-        link: entry.link,
-        icon: typeof entry.icon === "string" ? entry.icon : undefined,
-        category:
-          typeof category === "string" || typeof category === "number"
-            ? category
-            : category !== undefined
-              ? String(category)
-              : undefined,
-      };
-    })
-    .filter(Boolean) as BookmarkLink[];
+
+  const result: BookmarkLink[] = [];
+
+  value.forEach((item, index) => {
+    if (!item || typeof item !== "object") {
+      warnings.push(`${source}: links[${index}] 不是有效对象，已跳过`);
+      return;
+    }
+    const entry = item as Record<string, unknown>;
+    if (typeof entry.name !== "string" || typeof entry.link !== "string") {
+      warnings.push(`${source}: links[${index}] 缺少必填字段 name/link，已跳过`);
+      return;
+    }
+    const category = entry.category;
+    result.push({
+      name: entry.name,
+      link: entry.link,
+      icon: typeof entry.icon === "string" ? entry.icon : undefined,
+      category:
+        typeof category === "string" || typeof category === "number"
+          ? category
+          : category !== undefined
+            ? String(category)
+            : undefined,
+    });
+  });
+
+  return result;
 }
 
 export async function loadData(): Promise<NavigationData> {
+  const warnings: string[] = [];
   const appsYaml = await readYaml<{ links?: unknown }>(APPS_FILE);
   const bookmarksYaml = await readYaml<{ categories?: unknown; links?: unknown }>(BOOKMARKS_FILE);
   const configYaml = await readYaml<Record<string, unknown>>(CONFIG_FILE);
 
-  return {
-    apps: asAppLinks(appsYaml?.links),
-    categories: asCategories(bookmarksYaml?.categories),
-    bookmarks: asBookmarkLinks(bookmarksYaml?.links),
+  const result: NavigationData = {
+    apps: asAppLinks(appsYaml?.links, warnings, "apps.yml"),
+    categories: asCategories(bookmarksYaml?.categories, warnings, "bookmarks.yml"),
+    bookmarks: asBookmarkLinks(bookmarksYaml?.links, warnings, "bookmarks.yml"),
     footer: {
       enabled: Boolean((configYaml?.footer as { enabled?: boolean } | undefined)?.enabled),
       text:
@@ -170,4 +196,10 @@ export async function loadData(): Promise<NavigationData> {
       openBookmarkNewTab: pickBoolean(configYaml, ["open-bookmark-new-tab", "OpenBookmarkNewTab"], false),
     },
   };
+
+  if (warnings.length > 0) {
+    console.warn("配置存在无效条目，已忽略：\n- " + warnings.join("\n- "));
+  }
+
+  return result;
 }
