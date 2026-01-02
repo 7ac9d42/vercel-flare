@@ -1,34 +1,42 @@
-# 复制为 app/bookmarks.yml 后使用
 categories:
-  - id: quick
-    title: 快捷入口
-  - id: search
-    title: 搜索引擎
-  - id: tools
-    title: 在线工具
+- id: "1"
+  title: 快捷网址
+- id: "2"
+  title: 搜索引擎
+- id: "3"
+  title: 在线工具
+- id: "4"
+  title: 新分类
+- id: "5"
+  title: 新分类
 
 links:
-  - name: "公司首页"
-    link: "https://www.example.com"
-    icon: "home"
-    category: quick
-  - name: "知识库"
-    link: "https://kb.example.com"
-    icon: "book-open-variant"
-    category: quick
-  - name: "Google"
-    link: "https://www.google.com"
-    icon: "google"
-    category: search
-  - name: "Bing"
-    link: "https://www.bing.com"
-    icon: "search-web"
-    category: search
-  - name: "PDF 转换"
-    link: "https://pdf.example.com"
-    icon: "file-pdf-box"
-    category: tools
-  - name: "JSON 可视化"
-    link: "https://jsoncrack.com"
-    icon: "code-json"
-    category: tools
+- name: Github
+  link: https://github.com
+  icon: github
+  category: "1"
+
+- name: BiliBili
+  link: https://www.bilibili.com
+  icon: video
+  category: "1"
+- name: Zhihu
+
+  link: https://zhihu.com
+  icon: commentQuestion
+  category: "1"
+
+- name: Weibo
+  link: https://weibo.com
+  icon: sinaWeibo
+  category: "1"
+
+- name: Google
+  link: https://www.google.com
+  icon: google
+  category: "2"
+
+- name: Baidu
+  link: https://www.baidu.com
+  icon: searchWeb
+  category: "2"

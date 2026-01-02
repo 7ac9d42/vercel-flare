@@ -9,6 +9,10 @@
 - 已升级 Next.js > 16.0.7 以覆盖已披露的高危漏洞（CVE-2025-66478）
 
 ## Vercel 部署（推荐）
+自动部署：   
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/7ac9d42/vercel-flare)
+
+手动部署：   
 1. 使用模板创建自己的项目(推荐选用private)
 2. 准备配置（修改项目默认配置文件）  
    - `apps.yml`：`links` 列表，`name`/`link` 必填，可选 `icon`、`desc`

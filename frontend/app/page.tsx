@@ -2,6 +2,7 @@
 import { loadData } from "@/lib/loadData";
 import Clock from "@/components/Clock";
 import styles from "./page.module.css";
+import DOMPurify from "isomorphic-dompurify";
 
 const ICON_BASE = "/icons";
 
@@ -163,7 +164,13 @@ export default async function Home() {
               由 <span className={styles.heart}>Flare</span> 驱动
             </>
           ) : (
-            footer.text
+            <span
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(footer.text, {
+                  ADD_ATTR: ["target"],
+                }),
+              }}
+            />
           )}
         </div>
       )}

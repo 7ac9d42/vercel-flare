@@ -1,14 +1,40 @@
-# 复制为 app/apps.yml 后使用
 links:
-  - name: "管理面板"
-    link: "https://panel.example.com"
-    icon: "shield"     # 对应 frontend/public/icons/shield.svg
-    desc: "常用后台入口"
-  - name: "文件服务"
-    link: "https://files.example.com"
-    icon: "file-cloud"
-    desc: "NAS / 对象存储"
-  - name: "监控告警"
-    link: "https://status.example.com"
-    icon: "heart-pulse"
-    desc: "状态与健康检查"
+- name: Example Blog
+  link: https://github.com/7ac9d42/vercel-flare
+  icon: bookOpenVariant
+  desc: Sample personal blog
+
+- name: File Browser
+  link: https://github.com/7ac9d42/vercel-flare
+  icon: fileCloud
+  desc: File browser utility
+
+- name: Developer Tools
+  link: https://github.com/7ac9d42/vercel-flare
+  icon: tools
+  desc: Collection of developer utilities
+
+- name: JSON Viewer
+  link: https://github.com/7ac9d42/vercel-flare
+  icon: codeJson
+  desc: JSON visualization tool
+
+- name: PDF Toolkit
+  link: https://github.com/7ac9d42/vercel-flare
+  icon: filePdfBox
+  desc: PDF utilities
+
+- name: PDF Translator
+  link: https://github.com/7ac9d42/vercel-flare
+  icon: filePdfBox
+  desc: Translate PDF documents
+
+- name: Service Monitor
+  link: https://github.com/7ac9d42/vercel-flare
+  icon: heartPulse
+  desc: Service uptime monitoring
+
+- name: Admin Panel
+  link: https://github.com/7ac9d42/vercel-flare
+  icon: shield
+  desc: Service administration dashboard
