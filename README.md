@@ -54,10 +54,10 @@ outputDirectory: "frontend/out"
    `frontend/out` 可直接上传到任意静态空间。
 
 ## 目录约定
-- `app/*.example.yml`：示例配置，请复制为同名无 `.example` 的文件后使用
-- `frontend/public/icons`：构建时按需拉取的 SVG 图标，避免人为增删
+- `app/*.yml`：项目配置(<-请修改这里)
+- `frontend/public/icons`：构建时按需拉取的 SVG 图标，请避免人为增删
 
-## 如何选择图标？
+## 如何个性化icon？
 前往 https://pictogrammers.com/library/mdi/ 挑选你喜欢的icon，填入配置文件，部署时会自动拉取所需的图标
 
 ## 授权
