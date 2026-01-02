@@ -1,4 +1,5 @@
 # Vercel-Flare ✨
+- English translation: [README_en.md](README_en.md)
 >感谢项目 https://github.com/soulteary/docker-flare 提供的外观灵感与数据结构。本仓库为纯静态、只读的导航页，适配 Vercel/任意静态托管，不包含在线编辑或后台。
 
 ## Demo
@@ -8,7 +9,19 @@
 - 数据全部来自 `app/*.yml`，构建时读入后导出静态站点
 - 无后端依赖、无运行时写操作，默认内置所需 SVG 图标(按需在构建阶段拉取)
 - 移动端两列布局自适应，空分类自动隐藏
-- 已升级 Next.js > 16.0.7 以覆盖已披露的高危漏洞（CVE-2025-66478）
+- 已将 Next.js 升级至 >=16.0.7（修复 CVE-2025-66478）
+
+## 目录约定
+- `app/*.yml`：项目配置
+- `frontend/public/icons`：构建时按需拉取的 SVG 图标，请避免人为增删
+
+## 快速开始   
+1. 部署前，请先修改`./app`内的项目配置文件
+2. 参照下文部署方式部署
+3. 愉快使用😉
+
+## 如何个性化icon？
+前往 https://pictogrammers.com/library/mdi/ 挑选你喜欢的icon，将其名称填至配置文件对应位置，部署时会自动拉取所需的图标
 
 ## Vercel 部署（推荐）
 自动部署：   
@@ -29,7 +42,7 @@ outputDirectory: "frontend/out"
 ```
 推送后自动重新构建；如需自定义环境变量或域名，请在 Vercel 控制台配置。
 
-## 快速开始（本地）
+## 本地部署
 1) 安装依赖  
    ```bash
    cd frontend
@@ -52,13 +65,6 @@ outputDirectory: "frontend/out"
    npm run start    # serve frontend/out，默认 5005 端口
    ```
    `frontend/out` 可直接上传到任意静态空间。
-
-## 目录约定
-- `app/*.yml`：项目配置(<-请修改这里)
-- `frontend/public/icons`：构建时按需拉取的 SVG 图标，请避免人为增删
-
-## 如何个性化icon？
-前往 https://pictogrammers.com/library/mdi/ 挑选你喜欢的icon，填入配置文件，部署时会自动拉取所需的图标
 
 ## 授权
 本项目基于 MIT License 发布，详见 `LICENSE`
