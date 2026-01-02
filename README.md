@@ -1,6 +1,8 @@
 # Vercel-Flare ✨
+>感谢项目 https://github.com/soulteary/docker-flare 提供的外观灵感与数据结构。本仓库为纯静态、只读的导航页，适配 Vercel/任意静态托管，不包含在线编辑或后台。
 
-感谢上游项目 https://github.com/soulteary/docker-flare 提供的灵感与数据结构。本仓库为纯静态、只读的导航页，适配 Vercel/任意静态托管，不包含在线编辑或后台。
+## Demo
+- 在线演示: [https://vercel-flare-demo.vercel.app](https://vercel-flare-demo.vercel.app)
 
 ## 特性
 - 数据全部来自 `app/*.yml`，构建时读入后导出静态站点
