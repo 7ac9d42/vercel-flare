@@ -17,7 +17,8 @@ This is an AI-translated version of the Chinese README.
 - `frontend/public/icons`: SVG icons fetched on demand during build; please avoid manual additions or removals
 
 ## Quick start
-1. Before deployment, edit the configuration files in `./app`
+1. Before deployment, edit the configuration files in `./app`  
+   - If deploying with Vercel, perform this step in your own repository after the deployment completes.  
 2. Follow the deployment instructions below
 3. Enjoy using it 😉
 
